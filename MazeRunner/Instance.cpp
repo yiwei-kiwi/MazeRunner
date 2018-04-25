@@ -38,6 +38,16 @@ bool Instance::isTrap()
 	//TODO: wait for map
 }
 
+Player & Instance::getPlayer()
+{
+	return this->player;
+}
+
+Map &Instance::getMap()
+{
+	return this->iMap;
+}
+
 void Instance::movePlayer(Coord dest)
 {
 	//TODO: wait for map

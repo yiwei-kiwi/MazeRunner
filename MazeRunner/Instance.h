@@ -12,6 +12,8 @@ public:
 	void moveDown();
 	bool isVictory();
 	bool isTrap();
+	Player& getPlayer();
+	Map& getMap();
 private:
 	Player player;
 	Map iMap;

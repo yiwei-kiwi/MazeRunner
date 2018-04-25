@@ -1,6 +1,6 @@
 #include "Map.h"
 
-Map::Map(int length, int width) 
+Map::Map(int length, int width) : length(length), width(width)
 {
 	map.reserve(this->length * 2);
 	for (int x = 0; x < this->length; ++x) {
