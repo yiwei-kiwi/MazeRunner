@@ -72,8 +72,14 @@ void Instance::movePlayer(Coord dest)
 
 	temp = iMap.getTile(dest);
 
-	if (!temp->isWall())
+	if (temp != nullptr)
 	{
-		player.setCoord(dest);
+		if (iMap.isCoordInBound(dest) == true)
+		{
+			if (!temp->isWall())
+			{
+				player.setCoord(dest);
+			}
+		}
 	}
 }
