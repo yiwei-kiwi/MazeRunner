@@ -3,7 +3,7 @@
 class Player
 {
 public:
-	Player(const int teamID) : teamID(int teamID);
+	Player(const int teamID) : teamID(teamID) {}
 	~Player();
 	Coord getCoord() const;
 	int getID() const;

@@ -1,11 +1,5 @@
 #include "Player.h"
 
-Player::Player(const teamID) : teamID(teamID)
-{
-	location.x = 0;
-	location.y = 0;
-}
-
 Player::~Player()
 {
 

@@ -23,3 +23,16 @@ public:
 	void preformAction(Player &victim);
 };
 
+class TeleportTrap : public Tile {
+public:
+	TeleportTrap();
+	void preformAction(Player &victim);
+};
+
+class PauseTrap : public Tile {
+public:
+	PauseTrap(int seconds);
+	void preformAction(Player &victim);
+private:
+	const int seconds;
+};
