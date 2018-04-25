@@ -14,6 +14,7 @@ public:
 	bool isTrap();
 	Player& getPlayer();
 	Map& getMap();
+	void ActivateTrap();
 private:
 	Player player;
 	Map iMap;

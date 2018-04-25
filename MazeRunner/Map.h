@@ -4,6 +4,7 @@
 
 class Map
 {
+public:
 	Map(int length, int width);
 	~Map();
 	bool isCoordInBound(Coord location);
