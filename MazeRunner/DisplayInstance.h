@@ -4,10 +4,11 @@
 class DisplayInstance
 {
 public:
-	DisplayInstance();
+	DisplayInstance(sf::RenderWindow &window);
 	~DisplayInstance();
 	Instance game;
-	
+	bool isLost = false;
+
 	void render();
 private:
 	sf::RectangleShape noWall;
@@ -16,7 +17,7 @@ private:
 	sf::RectangleShape player;
 
 	void displayLost();
-	void displayVictory();
+	void displayVictory(int seconds = 0);
 	void input();
 	void drawInstance();
 	sf::RenderWindow &window;

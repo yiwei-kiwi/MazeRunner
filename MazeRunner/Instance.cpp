@@ -1,6 +1,6 @@
 #include "Instance.h"
 
-Instance::Instance() : player(0), iMap(1000, 1000)
+Instance::Instance() : player(0), iMap(500, 500)
 {
 
 }
@@ -48,15 +48,11 @@ bool Instance::isTrap()
 	return temp->isTrap();
 }
 
-void Instance::ActivateTrap()
+void Instance::activateTrap()
 {
 	if (this->isTrap())
 	{
-		Tile *temp;
-
-		temp = iMap.getTile(player.getCoord());
-
-		temp->performAction(player);
+		iMap.getTile(player.getCoord())->performAction(player);
 	}
 }
 
