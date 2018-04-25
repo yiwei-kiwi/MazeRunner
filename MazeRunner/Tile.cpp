@@ -3,7 +3,7 @@
 #include "Tile.h"
 #include "Player.h"
 
-Tile::Tile(bool wall, bool trap) : wall(wall), trap(trap)
+Tile::Tile(bool wall = false, bool trap = false, bool victory = false) : wall(wall), trap(trap), victory(victory)
 {
 }
 
@@ -22,11 +22,21 @@ bool Tile::isTrap() const
 	return this->trap;
 }
 
-WallTile::WallTile() : Tile(true, false)
+bool Tile::isVictory() const
+{
+	return this->victory;
+}
+
+WallTile::WallTile() : Tile(true, false, false)
 {
 }
 
-ResetTrap::ResetTrap() : Tile(false, true)
+
+VictoryTile::VictoryTile() : Tile(false, false, true)
+{
+}
+
+ResetTrap::ResetTrap() : Tile(false, true, false)
 {
 }
 
@@ -35,7 +45,7 @@ void ResetTrap::performAction(Player &victim)
 	victim.setCoord({ 0,0 });
 }
 
-TeleportTrap::TeleportTrap() : Tile(true, false)
+TeleportTrap::TeleportTrap() : Tile(true, false, false)
 {
 }
 
@@ -52,3 +62,4 @@ void PauseTrap::performAction(Player & victim)
 {
 	std::this_thread::sleep_for(std::chrono::seconds(this->seconds));
 }
+
