@@ -11,11 +11,13 @@ public:
 
 	void render();
 private:
+	sf::Texture playerSprite;
 	sf::RectangleShape noWall;
 	sf::RectangleShape wall;
 	sf::RectangleShape vTile;
 	sf::RectangleShape player;
 
+	void displayTrap();
 	void displayLost();
 	void displayVictory(int seconds = 0);
 	void input();

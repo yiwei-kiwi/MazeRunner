@@ -9,10 +9,12 @@ wall(sf::Vector2f(100, 100)),
 vTile(sf::Vector2f(100, 100)),
 player(sf::Vector2f(100, 100))
 {
+	playerSprite.loadFromFile("chessPieceSprite.png");
 	noWall.setFillColor(sf::Color::Green);
 	wall.setFillColor(sf::Color::Black);
 	vTile.setFillColor(sf::Color::Yellow);
-	//TODO: set player texture file
+	player.setTexture(&playerSprite);
+	player.setTextureRect(sf::IntRect(0, 100, 100, 100));
 }
 
 
@@ -25,33 +27,38 @@ void DisplayInstance::render()
 	while (window.isOpen()) {
 		sf::Event e;
 		while (window.pollEvent(e)) {
-			switch (e.type)
-			{
+			switch (e.type) {
 			case sf::Event::Closed:
-				window.close();
+				this->isLost = true;
 				break;
 			}
 		}
 
 		this->input();
 
-		if (game.isTrap()) {
-			game.activateTrap();
-		}
-
 		this->window.clear();
 		this->drawInstance();
 		this->window.display();
 
+		if (game.isTrap()) {
+			this->displayTrap();
+			game.activateTrap();
+		}
+
 		if (game.isVictory()) {
 			this->displayVictory();
-			window.close();
+			break;
 		}
 		if (this->isLost) {
 			this->displayLost();
-			window.close();
+			break;
 		}
 	}
+}
+
+void DisplayInstance::displayTrap()
+{
+	MessageBox(NULL, "You just activated my trap card! ;)", "Trap", MB_OK);
 }
 
 void DisplayInstance::displayLost()

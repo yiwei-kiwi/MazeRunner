@@ -3,7 +3,7 @@
 #include "Tile.h"
 #include "Player.h"
 
-Tile::Tile(bool wall = false, bool trap = false, bool victory = false) : wall(wall), trap(trap), victory(victory)
+Tile::Tile(bool wall, bool trap, bool victory) : wall(wall), trap(trap), victory(victory)
 {
 }
 
@@ -46,7 +46,7 @@ void ResetTrap::performAction(Player &victim)
 }
 
 
-PauseTrap::PauseTrap(int seconds) : seconds(seconds)
+PauseTrap::PauseTrap(int seconds) : Tile(false, true, false), seconds(seconds)
 {
 }
 

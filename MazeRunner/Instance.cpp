@@ -1,6 +1,8 @@
 #include "Instance.h"
+#include <chrono>
+#include <thread>
 
-Instance::Instance() : player(0), iMap(500, 500)
+Instance::Instance() : player(0), iMap()
 {
 
 }
@@ -70,16 +72,17 @@ void Instance::movePlayer(Coord dest)
 {
 	Tile *temp = nullptr;
 
-	temp = iMap.getTile(dest);
-
-	if (temp != nullptr)
+	if (iMap.isCoordInBound(dest) == true) 
 	{
-		if (iMap.isCoordInBound(dest) == true)
+		temp = iMap.getTile(dest);
+
+		if (temp != nullptr)
 		{
 			if (!temp->isWall())
 			{
 				player.setCoord(dest);
 			}
 		}
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	}
 }

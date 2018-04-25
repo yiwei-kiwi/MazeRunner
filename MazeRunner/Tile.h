@@ -32,7 +32,7 @@ public:
 
 class PauseTrap : public Tile {
 public:
-	PauseTrap(int seconds);
+	PauseTrap(int seconds = 3);
 	void performAction(Player &victim);
 private:
 	const int seconds;
