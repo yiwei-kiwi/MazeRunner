@@ -7,7 +7,7 @@ Tile::Tile(bool wall, bool trap) : wall(wall), trap(trap)
 {
 }
 
-void Tile::preformAction(Player &victim)
+void Tile::performAction(Player &victim)
 {
 	//nothing, an emtpy tile does nothing
 }
@@ -30,7 +30,7 @@ ResetTrap::ResetTrap() : Tile(false, true)
 {
 }
 
-void ResetTrap::preformAction(Player &victim)
+void ResetTrap::performAction(Player &victim)
 {
 	victim.setCoord({ 0,0 });
 }
@@ -48,7 +48,7 @@ PauseTrap::PauseTrap(int seconds) : seconds(seconds)
 {
 }
 
-void PauseTrap::preformAction(Player & victim)
+void PauseTrap::performAction(Player & victim)
 {
 	std::this_thread::sleep_for(std::chrono::seconds(this->seconds));
 }
