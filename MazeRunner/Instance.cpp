@@ -60,6 +60,16 @@ void Instance::ActivateTrap()
 	}
 }
 
+Player & Instance::getPlayer()
+{
+	return this->player;
+}
+
+Map &Instance::getMap()
+{
+	return this->iMap;
+}
+
 void Instance::movePlayer(Coord dest)
 {
 	Tile *temp = nullptr;
