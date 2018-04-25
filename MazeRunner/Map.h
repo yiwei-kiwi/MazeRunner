@@ -12,11 +12,13 @@ public:
 	~Map();
 	bool isCoordInBound(Coord location);
 	Tile *& getTile(Coord input);
-	void generateMap(unsigned int seed = 0);
+	void generateMap();
 private:
+	unsigned seed;
 	const int length;
 	const int width;
 	bool isPathTileValid(Coord newTile, std::vector<Coord> &path);
+	void generatePath(std::vector<Coord> &path);
 	bool addToPath(std::vector<Coord> &path, int direction);
 	void replaceTile(Coord tile, Tile* newTile);
 	bool isInPath(std::vector<Coord> &path, Coord location);

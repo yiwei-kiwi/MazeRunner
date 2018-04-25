@@ -9,10 +9,12 @@ wall(sf::Vector2f(100, 100)),
 vTile(sf::Vector2f(100, 100)),
 player(sf::Vector2f(100, 100))
 {
-	playerSprite.loadFromFile("chessPieceSprite.png");
-	noWall.setFillColor(sf::Color::Green);
-	wall.setFillColor(sf::Color::Black);
+	playerSprite.loadFromFile("mazeRunnerTextures.png");
+	wallSprite.loadFromFile("mazeRunnerTextures.png");
+	noWall.setFillColor(sf::Color(0,92,9));
 	vTile.setFillColor(sf::Color::Yellow);
+	wall.setTexture(&wallSprite);
+	wall.setTextureRect(sf::IntRect(0, 0, 100, 100));
 	player.setTexture(&playerSprite);
 	player.setTextureRect(sf::IntRect(0, 100, 100, 100));
 }

@@ -12,6 +12,7 @@ public:
 	void render();
 private:
 	sf::Texture playerSprite;
+	sf::Texture wallSprite;
 	sf::RectangleShape noWall;
 	sf::RectangleShape wall;
 	sf::RectangleShape vTile;

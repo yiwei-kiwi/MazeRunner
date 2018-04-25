@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="chessPieceSprite.png" />
+    <Image Include="mazeRunnerTextures.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Comfortaa-Bold.ttf" />

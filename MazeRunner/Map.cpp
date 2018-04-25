@@ -5,7 +5,7 @@
 #include <chrono>
 #include <thread>
 
-Map::Map(unsigned seed) : length(MAPSIZE), width(MAPSIZE)
+Map::Map(unsigned seed) : length(MAPSIZE), width(MAPSIZE), seed(seed)
 {
 	int count = 0;
 	for (int x = 0; x < this->length; ++x) {
@@ -13,7 +13,7 @@ Map::Map(unsigned seed) : length(MAPSIZE), width(MAPSIZE)
 			map[x][y] = new Tile;
 		}
 	}
-	this->generateMap(seed);
+	this->generateMap();
 }
 
 Map::~Map()
@@ -43,46 +43,30 @@ Tile *& Map::getTile(Coord input)
 	return map[input.x][input.y];
 }
 
-void Map::generateMap(unsigned int seed)
+void Map::generateMap()
 {
-	if (seed == 0) {
-		seed = std::time(NULL);
-	}
-	std::srand(seed);
-
-	bool isEnd = false;
 	std::vector<Coord> path;
-	std::vector<Coord>viableTiles;
-	path.reserve(MAPSIZE * 4);
-	path.push_back({ 0,0 });
-	for (int i = 0; i < (MAPSIZE * 2); ++i) {
-		viableTiles.clear();
-		auto potentialTile = path.back();
-		if (this->isPathTileValid({ potentialTile.x + 1, potentialTile.y }, path))
-			viableTiles.push_back({ potentialTile.x + 1, potentialTile.y });
-		if (this->isPathTileValid({ potentialTile.x - 1, potentialTile.y }, path))
-			viableTiles.push_back({ potentialTile.x - 1, potentialTile.y });
-		if (this->isPathTileValid({ potentialTile.x, potentialTile.y + 1 }, path))
-			viableTiles.push_back({ potentialTile.x, potentialTile.y + 1 });
-		if (this->isPathTileValid({ potentialTile.x, potentialTile.y - 1 }, path))
-			viableTiles.push_back({ potentialTile.x, potentialTile.y - 1 });
-		if (viableTiles.empty())
-			break;
-		int direction = (std::rand() % viableTiles.size());
-		path.push_back(viableTiles[direction]);
-		std::this_thread::sleep_for(std::chrono::milliseconds(1));
+	if (seed != 0) {
+		this->generatePath(path);
 	}
+	else {
+		while (path.size() < (MAPSIZE * 2)) {
+			path.clear();
+			this->generatePath(path);
+		}
+	}
+	
 	this->replaceTile(path.back(), new VictoryTile);
 
 	for (int x = 0; x < this->length; ++x) {
 		for (int y = 0; y < this->width; ++y) {
 			if (!this->isInPath(path, { x, y })){
 				int chance = std::rand() % 100;
-				if (chance < 30) {
-					if (chance < 20) {
+				if (chance < 70) {
+					if (chance < 60) {
 						this->replaceTile({ x,y }, new WallTile);
 					}
-					else if (chance < 25) {
+					else if (chance < 65) {
 						this->replaceTile({ x,y }, new ResetTrap);
 					}
 					else {
@@ -105,6 +89,32 @@ bool Map::isPathTileValid(Coord newTile, std::vector<Coord> &path)
 		return true;
 	}
 	return false;
+}
+
+void Map::generatePath(std::vector<Coord>& path)
+{
+	seed = std::time(NULL);
+	std::srand(seed);
+	
+	std::vector<Coord>viableTiles;
+	path.reserve(MAPSIZE * 4);
+	path.push_back({ 0,0 });
+	for (int i = 0; i < (MAPSIZE * 4); ++i) {
+		viableTiles.clear();
+		auto potentialTile = path.back();
+		if (this->isPathTileValid({ potentialTile.x + 1, potentialTile.y }, path))
+			viableTiles.push_back({ potentialTile.x + 1, potentialTile.y });
+		if (this->isPathTileValid({ potentialTile.x - 1, potentialTile.y }, path))
+			viableTiles.push_back({ potentialTile.x - 1, potentialTile.y });
+		if (this->isPathTileValid({ potentialTile.x, potentialTile.y + 1 }, path))
+			viableTiles.push_back({ potentialTile.x, potentialTile.y + 1 });
+		if (this->isPathTileValid({ potentialTile.x, potentialTile.y - 1 }, path))
+			viableTiles.push_back({ potentialTile.x, potentialTile.y - 1 });
+		if (viableTiles.empty())
+			break;
+		int direction = (std::rand() % viableTiles.size());
+		path.push_back(viableTiles[direction]);
+	}
 }
 
 bool Map::addToPath(std::vector<Coord>& path, int direction)

@@ -269,7 +269,9 @@ void GameMenu::launchGame(void)
 				if (checkMousePosClick(event) == 1)
 				{
 					DisplayInstance gameInstance(window);
+					window.setSize(sf::Vector2u(900, 900));
 					gameInstance.render();
+					window.setSize(sf::Vector2u(1000, 1000));
 				}
 				else if (checkMousePosClick(event) == 2)
 				{
