@@ -25,8 +25,3 @@ int Player::getID() const
 {
 	return teamID;
 }
-
-void Player::setID(int newID)
-{
-	teamID = newID;
-}
