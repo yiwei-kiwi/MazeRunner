@@ -27,7 +27,7 @@ public:
 class ResetTrap : public Tile {
 public:
 	ResetTrap();
-	void preformAction(Player &victim);
+	void performAction(Player &victim);
 };
 
 class TeleportTrap : public Tile {
@@ -39,7 +39,7 @@ public:
 class PauseTrap : public Tile {
 public:
 	PauseTrap(int seconds);
-	void preformAction(Player &victim);
+	void performAction(Player &victim);
 private:
 	const int seconds;
 };
