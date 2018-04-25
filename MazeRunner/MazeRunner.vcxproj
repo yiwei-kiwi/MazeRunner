@@ -129,6 +129,8 @@
     <ClInclude Include="Util.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Instance.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Util.cpp" />

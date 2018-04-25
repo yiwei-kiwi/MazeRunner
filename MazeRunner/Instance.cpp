@@ -1,7 +1,8 @@
 #include "Instance.h"
 
-Instance::Instance() : player(0), iMap(/*TODO: wait for map*/)
+Instance::Instance() : player(0), iMap(1000, 1000)
 {
+
 }
 
 void Instance::moveRight()
@@ -30,15 +31,43 @@ void Instance::moveDown()
 
 bool Instance::isVictory()
 {
-	//TODO: wait for map
+	Tile *temp = nullptr;
+	
+	temp = iMap.getTile(player.getCoord());
+	
+	return temp->isVictory();
+
 }
 
 bool Instance::isTrap()
 {
-	//TODO: wait for map
+	Tile *temp = nullptr;
+
+	temp = iMap.getTile(player.getCoord());
+	
+	return temp->isTrap();
+}
+
+void Instance::ActivateTrap()
+{
+	if (this->isTrap())
+	{
+		Tile *temp;
+
+		temp = iMap.getTile(player.getCoord());
+
+		temp->performAction(player);
+	}
 }
 
 void Instance::movePlayer(Coord dest)
 {
-	//TODO: wait for map
+	Tile *temp = nullptr;
+
+	temp = iMap.getTile(dest);
+
+	if (!temp->isWall())
+	{
+		player.setCoord(dest);
+	}
 }

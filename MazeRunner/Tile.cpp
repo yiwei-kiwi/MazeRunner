@@ -45,14 +45,6 @@ void ResetTrap::performAction(Player &victim)
 	victim.setCoord({ 0,0 });
 }
 
-TeleportTrap::TeleportTrap() : Tile(true, false, false)
-{
-}
-
-void TeleportTrap::preformAction(Player & victim)
-{
-	//TODO: Define this method.
-}
 
 PauseTrap::PauseTrap(int seconds) : seconds(seconds)
 {

@@ -4,7 +4,7 @@ class Player;
 class Tile {
 public:
 	Tile(bool wall = false, bool trap = false, bool victory = false);
-	virtual void preformAction(Player &victim);
+	virtual void performAction(Player &victim);
 	bool isWall() const;
 	bool isTrap() const;
 	bool isVictory() const;
@@ -28,12 +28,6 @@ class ResetTrap : public Tile {
 public:
 	ResetTrap();
 	void performAction(Player &victim);
-};
-
-class TeleportTrap : public Tile {
-public:
-	TeleportTrap();
-	void preformAction(Player &victim);
 };
 
 class PauseTrap : public Tile {
