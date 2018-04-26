@@ -15,6 +15,7 @@ public:
 private:
 	// The different objects for gameplay use
 	sf::Texture playerSprite;
+	sf::Texture wallSprite;
 	sf::RectangleShape noWall;
 	sf::RectangleShape wall;
 	sf::RectangleShape vTile;

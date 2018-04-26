@@ -39,9 +39,8 @@ public:
 
 class PauseTrap : public Tile {
 public:
-	// Pauses the game for 3 seconds, then resumes action
-	PauseTrap(int seconds = 3);
+	PauseTrap(double seconds = 2.50);
 	void performAction(Player &victim);
 private:
-	const int seconds;
+	const double seconds;
 };

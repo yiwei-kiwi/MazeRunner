@@ -16,14 +16,17 @@ public:
 	bool isCoordInBound(Coord location);
 	// Grabs the tile at the current coordinates
 	Tile *& getTile(Coord input);
+	void generateMap();
 	// Creates the game map
 	void generateMap(unsigned int seed = 0);
 private:
 	// Dimensions of the map
+	unsigned seed;
 	const int length;
 	const int width;
 	// YI Comment these functions
 	bool isPathTileValid(Coord newTile, std::vector<Coord> &path);
+	void generatePath(std::vector<Coord> &path);
 	bool addToPath(std::vector<Coord> &path, int direction);
 	void replaceTile(Coord tile, Tile* newTile);
 	bool isInPath(std::vector<Coord> &path, Coord location);

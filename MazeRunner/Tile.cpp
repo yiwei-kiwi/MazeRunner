@@ -46,12 +46,12 @@ void ResetTrap::performAction(Player &victim)
 }
 
 
-PauseTrap::PauseTrap(int seconds) : Tile(false, true, false), seconds(seconds)
+PauseTrap::PauseTrap(double seconds) : Tile(false, true, false), seconds(seconds)
 {
 }
 
 void PauseTrap::performAction(Player & victim)
 {
-	std::this_thread::sleep_for(std::chrono::seconds(this->seconds));
+	std::this_thread::sleep_for(std::chrono::duration<double>(seconds));
 }
 
