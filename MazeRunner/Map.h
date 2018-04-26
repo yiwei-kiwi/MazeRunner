@@ -16,9 +16,8 @@ public:
 	bool isCoordInBound(Coord location);
 	// Grabs the tile at the current coordinates
 	Tile *& getTile(Coord input);
-	void generateMap();
 	// Creates the game map
-	void generateMap(unsigned int seed = 0);
+	void generateMap();
 private:
 	// Dimensions of the map
 	unsigned seed;
