@@ -26,7 +26,7 @@ private:
 	void displayVictory(int seconds = 0);
 	// Deterimines what action to take depending on what key the player pressed
 	void input();
-	// YI Comment this
+	// draws the game screen
 	void drawInstance();
 	sf::RenderWindow &window;
 };

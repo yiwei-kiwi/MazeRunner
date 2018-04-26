@@ -23,7 +23,7 @@ private:
 	unsigned seed;
 	const int length;
 	const int width;
-	// YI Comment these functions
+	// Functions for genrating random map
 	bool isPathTileValid(Coord newTile, std::vector<Coord> &path);
 	void generatePath(std::vector<Coord> &path);
 	bool addToPath(std::vector<Coord> &path, int direction);

@@ -9,13 +9,11 @@ public:
 private:
 	// Draws a rounded rectangle
 	void drawRoundedRectangle(int posXCircleLeft, int posYCircleLeft, sf::RenderWindow &window);
-	// YI comment these functions
 	int checkMousePosMenu(sf::Event pos);//return 0 for no, 1 for start,2 for rules, 3 for exit?
 	int checkMousePosClick(sf::Event pos);//return 0 for no, 1 for start,2 for rules, 3 for exit?
 	void HighlightRoundedRectangle(int posXCircleLeft, int posYCircleLeft, sf::RenderWindow &window);
 	// Shows the rules of the game to the user
 	void displayGameRules(sf::RenderWindow &window, sf::Text rules, sf::Font font);
-	// YI comment these functions
 	void drawBackArrow(int posXTriTop, int posYTriTop, sf::RenderWindow &window);
 };
 
