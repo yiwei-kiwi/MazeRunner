@@ -1,6 +1,7 @@
 #pragma once
 
-struct Coord { //because this is a struct, it can be simply represented by {x,y}, kinda copied over from my chess game
+// A struct containing a x and y variable to represent the coordinate position of an object
+struct Coord { 
 	int x;
 	int y;
 
