@@ -42,6 +42,7 @@ ResetTrap::ResetTrap() : Tile(false, true, false)
 
 void ResetTrap::performAction(Player &victim)
 {
+	// Sets the player's coordinates to (0,0) 
 	victim.setCoord({ 0,0 });
 }
 

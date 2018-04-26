@@ -8,6 +8,7 @@
 Map::Map(unsigned seed) : length(MAPSIZE), width(MAPSIZE), seed(seed)
 {
 	int count = 0;
+	// Creates the map based off the MAPSIZE; creates a new tile at every coordinate
 	for (int x = 0; x < this->length; ++x) {
 		for (int y = 0; y < this->width; ++y) {
 			map[x][y] = new Tile;
@@ -18,6 +19,7 @@ Map::Map(unsigned seed) : length(MAPSIZE), width(MAPSIZE), seed(seed)
 
 Map::~Map()
 {
+	// Goes through every coordinate and destroys the tile at that coordinate
 	for (int x = 0; x < this->length; ++x)
 	{
 		for (int y = 0; y < this->width; ++y)
@@ -31,6 +33,7 @@ Map::~Map()
 
 bool Map::isCoordInBound(Coord location)
 {
+	// Compares the current coordinates with the boundaries
 	if ((location.x < length) && (location.x >= 0)) {
 		if ((location.y < width) && (location.y >= 0))
 			return true;

@@ -39,6 +39,7 @@ public:
 
 class PauseTrap : public Tile {
 public:
+	// Pauses the game for 2 and 1/2 seconds
 	PauseTrap(double seconds = 2.50);
 	void performAction(Player &victim);
 private:

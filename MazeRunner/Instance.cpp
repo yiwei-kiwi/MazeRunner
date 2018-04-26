@@ -83,6 +83,7 @@ void Instance::movePlayer(Coord dest)
 				player.setCoord(dest);
 			}
 		}
+		// Creates a delay in the execution of every command 
 		std::this_thread::sleep_for(std::chrono::milliseconds(250));
 	}
 }

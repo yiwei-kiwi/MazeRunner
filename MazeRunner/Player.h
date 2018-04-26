@@ -15,6 +15,8 @@ public:
 	void setCoord(Coord newLocation);
 
 private:
+	// The coordinates of the current location
 	Coord location;
+	// Determines what team the current user is on
 	const int teamID;
 };
